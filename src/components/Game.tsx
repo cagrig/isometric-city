@@ -1431,7 +1431,7 @@ function AdvisorsPanel() {
   );
 }
 
-type OverlayMode = 'none' | 'power' | 'water' | 'fire' | 'police';
+type OverlayMode = 'none' | 'power' | 'water' | 'fire' | 'police' | 'health' | 'education';
 
 // Image cache for building sprites
 const imageCache = new Map<string, HTMLImageElement>();
@@ -1637,7 +1637,7 @@ function CanvasIsometricGrid({ overlayMode, selectedTile, setSelectedTile }: {
     // Speed multiplier: 0 = paused, 1 = normal, 2 = fast (2x), 3 = very fast (4x)
     const speedMultiplier = currentSpeed === 0 ? 0 : currentSpeed === 1 ? 1 : currentSpeed === 2 ? 2.5 : 4;
     
-    const maxCars = Math.min(40, Math.max(4, Math.floor(currentGridSize / 2)));
+    const maxCars = Math.min(80, Math.max(8, Math.floor(currentGridSize)));
     carSpawnTimerRef.current -= delta;
     if (carsRef.current.length < maxCars && carSpawnTimerRef.current <= 0) {
       if (spawnRandomCar()) {
@@ -2018,6 +2018,16 @@ function CanvasIsometricGrid({ overlayMode, selectedTile, setSelectedTile }: {
         // Blue gradient: darker blue = better coverage, lighter blue = poor coverage
         const intensity = coverage / 100;
         fillStyle = `rgba(${59 + Math.floor(intensity * 100)}, ${130 + Math.floor(intensity * 100)}, ${246 - Math.floor(intensity * 50)}, ${0.3 + intensity * 0.4})`;
+      } else if (overlayMode === 'health') {
+        const coverage = state.services.health[tile.y][tile.x];
+        // Green gradient: darker green = better coverage, lighter green = poor coverage
+        const intensity = coverage / 100;
+        fillStyle = `rgba(${34 + Math.floor(intensity * 100)}, ${197 - Math.floor(intensity * 50)}, ${94 + Math.floor(intensity * 50)}, ${0.3 + intensity * 0.4})`;
+      } else if (overlayMode === 'education') {
+        const coverage = state.services.education[tile.y][tile.x];
+        // Purple gradient: darker purple = better coverage, lighter purple = poor coverage
+        const intensity = coverage / 100;
+        fillStyle = `rgba(${147 + Math.floor(intensity * 50)}, ${51 + Math.floor(intensity * 100)}, ${234 - Math.floor(intensity * 50)}, ${0.3 + intensity * 0.4})`;
       } else {
         fillStyle = 'rgba(128, 128, 128, 0.4)';
       }
@@ -3061,9 +3071,6 @@ function CanvasIsometricGrid({ overlayMode, selectedTile, setSelectedTile }: {
         </div>
       )}
       
-      <Badge variant="secondary" className="absolute bottom-4 left-4 font-mono">
-        {Math.round(zoom * 100)}%
-      </Badge>
     </div>
   );
 }
@@ -3131,6 +3138,26 @@ const OverlayModeToggle = React.memo(function OverlayModeToggle({
         >
           <SafetyIcon size={14} />
         </Button>
+        
+        <Button
+          variant={overlayMode === 'health' ? 'default' : 'ghost'}
+          size="sm"
+          onClick={() => setOverlayMode('health')}
+          className={`h-8 px-3 ${overlayMode === 'health' ? 'bg-green-500 hover:bg-green-600' : ''}`}
+          title="Health Coverage"
+        >
+          <HealthIcon size={14} />
+        </Button>
+        
+        <Button
+          variant={overlayMode === 'education' ? 'default' : 'ghost'}
+          size="sm"
+          onClick={() => setOverlayMode('education')}
+          className={`h-8 px-3 ${overlayMode === 'education' ? 'bg-purple-500 hover:bg-purple-600' : ''}`}
+          title="Education Coverage"
+        >
+          <EducationIcon size={14} />
+        </Button>
       </div>
     </Card>
   );
@@ -3158,6 +3185,10 @@ export default function Game() {
       setOverlayMode('fire');
     } else if (state.selectedTool === 'police_station') {
       setOverlayMode('police');
+    } else if (state.selectedTool === 'hospital') {
+      setOverlayMode('health');
+    } else if (state.selectedTool === 'school' || state.selectedTool === 'university') {
+      setOverlayMode('education');
     }
   }, [state.selectedTool]);
   
@@ -3208,9 +3239,6 @@ export default function Game() {
         {state.activePanel === 'advisors' && <AdvisorsPanel />}
         {state.activePanel === 'settings' && <SettingsPanel />}
         
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-muted-foreground text-xs pointer-events-none">
-          WASD to pan • Alt+Drag or Middle-click to pan • Scroll to zoom • Drag zones to create areas • Auto-saves to browser
-        </div>
       </div>
     </TooltipProvider>
   );
