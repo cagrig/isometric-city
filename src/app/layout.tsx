@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import {NextIntlClientProvider} from 'next-intl';
 import { Playfair_Display, DM_Sans } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
@@ -78,7 +79,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="mobile-web-app-capable" content="yes" />
         <link rel="apple-touch-icon" href="/assets/buildings/residential.png" />
       </head>
-      <body className="bg-background text-foreground antialiased font-sans overflow-hidden">{children}<Analytics /></body>
+      <body className="bg-background text-foreground antialiased font-sans overflow-hidden">
+        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <Analytics />
+      </body>
     </html>
   );
 }

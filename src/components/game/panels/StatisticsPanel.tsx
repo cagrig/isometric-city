@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { useGame } from '@/context/GameContext';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Card } from '@/components/ui/card';
@@ -12,6 +13,8 @@ export function StatisticsPanel() {
   const [activeTab, setActiveTab] = useState<'population' | 'money' | 'happiness'>('population');
   
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  const t = useTranslations();
   
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -86,25 +89,25 @@ export function StatisticsPanel() {
     <Dialog open={true} onOpenChange={() => setActivePanel('none')}>
       <DialogContent className="max-w-[600px]">
         <DialogHeader>
-          <DialogTitle>City Statistics</DialogTitle>
+          <DialogTitle>{t('statistics.title')}</DialogTitle>
         </DialogHeader>
         
         <div className="space-y-4">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
             <Card className="p-2 sm:p-3">
-              <div className="text-muted-foreground text-[10px] sm:text-xs mb-1">Population</div>
+              <div className="text-muted-foreground text-[10px] sm:text-xs mb-1">{t('statistics.population')}</div>
               <div className="font-mono tabular-nums font-semibold text-green-400 text-sm sm:text-base truncate">{stats.population.toLocaleString()}</div>
             </Card>
             <Card className="p-2 sm:p-3">
-              <div className="text-muted-foreground text-[10px] sm:text-xs mb-1">Jobs</div>
+              <div className="text-muted-foreground text-[10px] sm:text-xs mb-1">{t('statistics.jobs')}</div>
               <div className="font-mono tabular-nums font-semibold text-blue-400 text-sm sm:text-base truncate">{stats.jobs.toLocaleString()}</div>
             </Card>
             <Card className="p-2 sm:p-3">
-              <div className="text-muted-foreground text-[10px] sm:text-xs mb-1">Treasury</div>
+              <div className="text-muted-foreground text-[10px] sm:text-xs mb-1">{t('statistics.treasury')}</div>
               <div className="font-mono tabular-nums font-semibold text-amber-400 text-sm sm:text-base truncate">${stats.money.toLocaleString()}</div>
             </Card>
             <Card className="p-2 sm:p-3">
-              <div className="text-muted-foreground text-[10px] sm:text-xs mb-1">Weekly</div>
+              <div className="text-muted-foreground text-[10px] sm:text-xs mb-1">{t('statistics.weekly')}</div>
               <div className={`font-mono tabular-nums font-semibold text-sm sm:text-base truncate ${stats.income - stats.expenses >= 0 ? 'text-green-400' : 'text-red-400'}`}>
                 ${Math.floor((stats.income - stats.expenses) / 4).toLocaleString()}
               </div>
@@ -113,16 +116,16 @@ export function StatisticsPanel() {
           
           <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as typeof activeTab)}>
             <TabsList className="grid w-full grid-cols-3 h-auto">
-              <TabsTrigger value="population" className="text-xs sm:text-sm py-2 px-2 sm:px-3">Population</TabsTrigger>
-              <TabsTrigger value="money" className="text-xs sm:text-sm py-2 px-2 sm:px-3">Money</TabsTrigger>
-              <TabsTrigger value="happiness" className="text-xs sm:text-sm py-2 px-2 sm:px-3">Happiness</TabsTrigger>
+              <TabsTrigger value="population" className="text-xs sm:text-sm py-2 px-2 sm:px-3">{t('statistics.population')}</TabsTrigger>
+              <TabsTrigger value="money" className="text-xs sm:text-sm py-2 px-2 sm:px-3">{t('statistics.money')}</TabsTrigger>
+              <TabsTrigger value="happiness" className="text-xs sm:text-sm py-2 px-2 sm:px-3">{t('statistics.happiness')}</TabsTrigger>
             </TabsList>
           </Tabs>
           
           <Card className="p-4">
             {history.length < 2 ? (
               <div className="h-[200px] flex items-center justify-center text-muted-foreground text-sm">
-                Not enough data yet. Keep playing to see historical trends.
+                {t('statistics.no_data')}
               </div>
             ) : (
               <canvas ref={canvasRef} width={536} height={200} className="w-full rounded-md" />

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback, useRef, useMemo } from 'react';
+import { useTranslations } from 'next-intl';
 import { useGame } from '@/context/GameContext';
 import { Tool, TOOL_INFO } from '@/types/game';
 import { useMobile } from '@/hooks/useMobile';
@@ -31,17 +32,17 @@ interface MenuItem {
 }
 
 const MENU_CATEGORIES = [
-  { key: 'tools', label: 'Tools' },
-  { key: 'zones', label: 'Zones' },
-  { key: 'services', label: 'Services' },
-  { key: 'parks', label: 'Parks' },
-  { key: 'sports', label: 'Sports' },
-  { key: 'recreation', label: 'Recreation' },
-  { key: 'waterfront', label: 'Waterfront' },
-  { key: 'community', label: 'Community' },
-  { key: 'utilities', label: 'Utilities' },
-  { key: 'special', label: 'Special' },
-  { key: 'panels', label: 'Panels' },
+  { key: 'tools', label: 'commandMenu.categories.tools' },
+  { key: 'zones', label: 'commandMenu.categories.zones' },
+  { key: 'services', label: 'commandMenu.categories.services' },
+  { key: 'parks', label: 'commandMenu.categories.parks' },
+  { key: 'sports', label: 'commandMenu.categories.sports' },
+  { key: 'recreation', label: 'commandMenu.categories.recreation' },
+  { key: 'waterfront', label: 'commandMenu.categories.waterfront' },
+  { key: 'community', label: 'commandMenu.categories.community' },
+  { key: 'utilities', label: 'commandMenu.categories.utilities' },
+  { key: 'special', label: 'commandMenu.categories.special' },
+  { key: 'panels', label: 'commandMenu.categories.panels' }
 ] as const;
 
 // Build menu items from tools
@@ -243,6 +244,8 @@ export function CommandMenu() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
+
+  const t = useTranslations();
   
   // Handler to update search and reset selection
   const handleSearchChange = useCallback((value: string) => {
@@ -380,7 +383,7 @@ export function CommandMenu() {
         onKeyDown={handleKeyDown}
       >
         <VisuallyHidden.Root>
-          <DialogTitle>Command Menu</DialogTitle>
+          <DialogTitle>{t('commandMenu.title')}</DialogTitle>
         </VisuallyHidden.Root>
         
         {/* Search input */}
@@ -397,7 +400,7 @@ export function CommandMenu() {
             ref={inputRef}
             value={search}
             onChange={(e) => handleSearchChange(e.target.value)}
-            placeholder="Search tools, buildings, panels..."
+            placeholder={t('commandMenu.search_placeholder')}
             className="border-0 focus-visible:ring-0 focus-visible:ring-offset-0 bg-transparent h-12 text-sm"
           />
           <kbd className="hidden sm:inline-flex h-5 select-none items-center gap-1 rounded border border-sidebar-border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground">
@@ -410,7 +413,7 @@ export function CommandMenu() {
           <div ref={listRef} className="p-2">
             {flatItems.length === 0 ? (
               <div className="py-6 text-center text-sm text-muted-foreground">
-                No results found.
+                {t('commandMenu.no_results')}
               </div>
             ) : (
               MENU_CATEGORIES.map(category => {
@@ -420,7 +423,7 @@ export function CommandMenu() {
                 return (
                   <div key={category.key} className="mb-2">
                     <div className="px-2 py-1.5 text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
-                      {category.label}
+                      {t(category.label)}
                     </div>
                     <div className="flex flex-col gap-0.5">
                       {items.map((item) => {
@@ -443,12 +446,12 @@ export function CommandMenu() {
                             )}
                           >
                             <div className="flex flex-col gap-0.5 min-w-0">
-                              <span className="font-medium truncate">{item.name}</span>
+                              <span className="font-medium truncate">{t(item.name)}</span>
                               <span className={cn(
                                 'text-xs truncate',
                                 isSelected ? 'text-primary-foreground/70' : 'text-muted-foreground'
                               )}>
-                                {item.description}
+                                {t(item.description)}
                               </span>
                             </div>
                             {item.cost !== undefined && item.cost > 0 && (
@@ -476,17 +479,17 @@ export function CommandMenu() {
             <span className="flex items-center gap-1">
               <kbd className="inline-flex h-4 items-center rounded border border-sidebar-border bg-muted px-1 font-mono text-[10px]">↑</kbd>
               <kbd className="inline-flex h-4 items-center rounded border border-sidebar-border bg-muted px-1 font-mono text-[10px]">↓</kbd>
-              <span>navigate</span>
+              <span>{t('commandMenu.navigate')}</span>
             </span>
             <span className="flex items-center gap-1">
               <kbd className="inline-flex h-4 items-center rounded border border-sidebar-border bg-muted px-1 font-mono text-[10px]">↵</kbd>
-              <span>select</span>
+              <span>{t('commandMenu.select')}</span>
             </span>
           </div>
           <span className="flex items-center gap-1">
             <kbd className="inline-flex h-4 items-center rounded border border-sidebar-border bg-muted px-1 font-mono text-[10px]">⌘</kbd>
             <kbd className="inline-flex h-4 items-center rounded border border-sidebar-border bg-muted px-1 font-mono text-[10px]">K</kbd>
-            <span>to toggle</span>
+            <span>{t('commandMenu.to_toggle')}</span>
           </span>
         </div>
       </DialogContent>

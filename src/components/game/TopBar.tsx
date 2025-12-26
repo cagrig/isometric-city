@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { useGame } from '@/context/GameContext';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
@@ -138,14 +139,16 @@ export function MiniStat({ icon, label, value }: MiniStatProps) {
 export const StatsPanel = React.memo(function StatsPanel() {
   const { state } = useGame();
   const { stats } = state;
+
+  const t = useTranslations();
   
   return (
     <div className="h-8 bg-secondary/50 border-b border-border flex items-center justify-center gap-8 text-xs">
-      <MiniStat icon={<HappyIcon size={12} />} label="Happiness" value={stats.happiness} />
-      <MiniStat icon={<HealthIcon size={12} />} label="Health" value={stats.health} />
-      <MiniStat icon={<EducationIcon size={12} />} label="Education" value={stats.education} />
-      <MiniStat icon={<SafetyIcon size={12} />} label="Safety" value={stats.safety} />
-      <MiniStat icon={<EnvironmentIcon size={12} />} label="Environment" value={stats.environment} />
+      <MiniStat icon={<HappyIcon size={12} />} label={t('statistics.happiness')} value={stats.happiness} />
+      <MiniStat icon={<HealthIcon size={12} />} label={t('statistics.health')} value={stats.health} />
+      <MiniStat icon={<EducationIcon size={12} />} label={t('statistics.education')} value={stats.education} />
+      <MiniStat icon={<SafetyIcon size={12} />} label={t('statistics.safety')} value={stats.safety} />
+      <MiniStat icon={<EnvironmentIcon size={12} />} label={t('statistics.environment')} value={stats.environment} />
     </div>
   );
 });
@@ -160,6 +163,8 @@ export const TopBar = React.memo(function TopBar() {
   
   const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   const formattedDate = `${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}-${year}`;
+
+  const t = useTranslations();
   
   return (
     <div className="h-14 bg-card border-b border-border flex items-center justify-between px-4">
@@ -213,17 +218,17 @@ export const TopBar = React.memo(function TopBar() {
       </div>
       
       <div className="flex items-center gap-8">
-        <StatBadge value={stats.population.toLocaleString()} label="Population" />
-        <StatBadge value={stats.jobs.toLocaleString()} label="Jobs" />
+        <StatBadge value={stats.population.toLocaleString()} label={t('statistics.population')} />
+        <StatBadge value={stats.jobs.toLocaleString()} label={t('statistics.jobs')} />
         <StatBadge 
           value={`$${stats.money.toLocaleString()}`} 
-          label="Funds"
+          label={t('app.funds')}
           variant={stats.money < 0 ? 'destructive' : stats.money < 1000 ? 'warning' : 'success'}
         />
         <Separator orientation="vertical" className="h-8" />
         <StatBadge 
           value={`$${(stats.income - stats.expenses).toLocaleString()}`} 
-          label="Monthly"
+          label={t('app.monthly')}
           variant={stats.income - stats.expenses >= 0 ? 'success' : 'destructive'}
         />
       </div>
@@ -238,7 +243,7 @@ export const TopBar = React.memo(function TopBar() {
         <Separator orientation="vertical" className="h-8" />
         
         <div className="flex items-center gap-2">
-          <span className="text-muted-foreground text-xs">Tax</span>
+          <span className="text-muted-foreground text-xs">{t('app.tax')}</span>
           <Slider
             value={[taxRate]}
             onValueChange={(value) => setTaxRate(value[0])}

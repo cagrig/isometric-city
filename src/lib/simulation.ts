@@ -734,14 +734,14 @@ function createBuilding(type: BuildingType): Building {
 
 function createInitialBudget(): Budget {
   return {
-    police: { name: 'Police', funding: 100, cost: 0 },
-    fire: { name: 'Fire', funding: 100, cost: 0 },
-    health: { name: 'Health', funding: 100, cost: 0 },
-    education: { name: 'Education', funding: 100, cost: 0 },
-    transportation: { name: 'Transportation', funding: 100, cost: 0 },
-    parks: { name: 'Parks', funding: 100, cost: 0 },
-    power: { name: 'Power', funding: 100, cost: 0 },
-    water: { name: 'Water', funding: 100, cost: 0 },
+    police: { name: 'budget.police', funding: 100, cost: 0 },
+    fire: { name: 'budget.fire', funding: 100, cost: 0 },
+    health: { name: 'budget.health', funding: 100, cost: 0 },
+    education: { name: 'budget.education', funding: 100, cost: 0 },
+    transportation: { name: 'budget.transportation', funding: 100, cost: 0 },
+    parks: { name: 'budget.parks', funding: 100, cost: 0 },
+    power: { name: 'budget.power', funding: 100, cost: 0 },
+    water: { name: 'budget.water', funding: 100, cost: 0 },
   };
 }
 

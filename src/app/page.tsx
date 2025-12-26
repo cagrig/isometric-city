@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useMemo, useRef } from 'react';
+import { NextIntlClientProvider } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { GameProvider } from '@/context/GameContext';
 import Game from '@/components/Game';
@@ -282,7 +283,9 @@ export default function HomePage() {
     return (
       <GameProvider>
         <main className="h-screen w-screen overflow-hidden">
+        {/* <NextIntlClientProvider> */}
           <Game onExit={handleExitGame} />
+        {/* </NextIntlClientProvider> */}
         </main>
       </GameProvider>
     );

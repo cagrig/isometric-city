@@ -1,0 +1,309 @@
+{
+  "tools": {
+    "select": {
+      "name": "Select",
+      "description": "Click to view tile info"
+    },
+    "bulldoze": {
+      "name": "Bulldoze",
+      "description": "Remove buildings and zones"
+    },
+    "road": {
+      "name": "Road",
+      "description": "Connect your city"
+    },
+    "rail": {
+      "name": "Rail",
+      "description": "Build railway tracks"
+    },
+    "subway": {
+      "name": "Subway",
+      "description": "Underground transit"
+    },
+    "tree": {
+      "name": "Tree",
+      "description": "Plant trees to improve environment"
+    },
+    "zone_residential": {
+      "name": "Residential",
+      "description": "Zone for housing"
+    },
+    "zone_commercial": {
+      "name": "Commercial",
+      "description": "Zone for shops and offices"
+    },
+    "zone_industrial": {
+      "name": "Industrial",
+      "description": "Zone for factories"
+    },
+    "zone_dezone": {
+      "name": "De-zone",
+      "description": "Remove zoning"
+    },
+    "police_station": {
+      "name": "Police",
+      "description": "Increase safety"
+    },
+    "fire_station": {
+      "name": "Fire Station",
+      "description": "Fight fires"
+    },
+    "hospital": {
+      "name": "Hospital",
+      "description": "Improve health (2x2)"
+    },
+    "school": {
+      "name": "School",
+      "description": "Basic education (2x2)"
+    },
+    "university": {
+      "name": "University",
+      "description": "Higher education (3x3)"
+    },
+    "park": {
+      "name": "Small Park",
+      "description": "Boost happiness and land value (1x1)"
+    },
+    "park_large": {
+      "name": "Large Park",
+      "description": "Large park (3x3)"
+    },
+    "tennis": {
+      "name": "Tennis Court",
+      "description": "Recreation facility"
+    },
+    "power_plant": {
+      "name": "Power Plant",
+      "description": "Generate electricity (2x2)"
+    },
+    "water_tower": {
+      "name": "Water Tower",
+      "description": "Provide water"
+    },
+    "subway_station": {
+      "name": "Subway Station",
+      "description": "Access to subway network"
+    },
+    "rail_station": {
+      "name": "Rail Station",
+      "description": "Passenger rail station"
+    },
+    "stadium": {
+      "name": "Stadium",
+      "description": "Boosts commercial demand (3x3)"
+    },
+    "museum": {
+      "name": "Museum",
+      "description": "Boosts commercial & residential demand (3x3)"
+    },
+    "airport": {
+      "name": "Airport",
+      "description": "Boosts commercial & industrial demand (4x4)"
+    },
+    "space_program": {
+      "name": "Space Program",
+      "description": "Boosts industrial & residential demand (3x3)"
+    },
+    "city_hall": {
+      "name": "City Hall",
+      "description": "Boosts all demand types (2x2)"
+    },
+    "amusement_park": {
+      "name": "Amusement Park",
+      "description": "Major boost to commercial demand (4x4)"
+    },
+    "basketball_courts": {
+      "name": "Basketball Courts",
+      "description": "Outdoor basketball facility"
+    },
+    "playground_small": {
+      "name": "Small Playground",
+      "description": "Children's playground"
+    },
+    "playground_large": {
+      "name": "Large Playground",
+      "description": "Large playground with more equipment (2x2)"
+    },
+    "baseball_field_small": {
+      "name": "Baseball Field",
+      "description": "Local baseball diamond (2x2)"
+    },
+    "soccer_field_small": {
+      "name": "Soccer Field",
+      "description": "Soccer/football pitch"
+    },
+    "football_field": {
+      "name": "Football Field",
+      "description": "Football stadium (2x2)"
+    },
+    "baseball_stadium": {
+      "name": "Baseball Stadium",
+      "description": "Professional baseball venue (3x3)"
+    },
+    "community_center": {
+      "name": "Community Center",
+      "description": "Local community hub"
+    },
+    "office_building_small": {
+      "name": "Small Office",
+      "description": "Small office building"
+    },
+    "swimming_pool": {
+      "name": "Swimming Pool",
+      "description": "Public swimming facility"
+    },
+    "skate_park": {
+      "name": "Skate Park",
+      "description": "Skateboarding park"
+    },
+    "mini_golf_course": {
+      "name": "Mini Golf",
+      "description": "Miniature golf course (2x2)"
+    },
+    "bleachers_field": {
+      "name": "Bleachers Field",
+      "description": "Sports field with seating"
+    },
+    "go_kart_track": {
+      "name": "Go-Kart Track",
+      "description": "Racing entertainment (2x2)"
+    },
+    "amphitheater": {
+      "name": "Amphitheater",
+      "description": "Outdoor performance venue (2x2)"
+    },
+    "greenhouse_garden": {
+      "name": "Greenhouse Garden",
+      "description": "Botanical greenhouse (2x2)"
+    },
+    "animal_pens_farm": {
+      "name": "Animal Pens",
+      "description": "Petting zoo / farm animals"
+    },
+    "cabin_house": {
+      "name": "Cabin House",
+      "description": "Rustic cabin retreat"
+    },
+    "campground": {
+      "name": "Campground",
+      "description": "Outdoor camping area"
+    },
+    "marina_docks_small": {
+      "name": "Marina",
+      "description": "Boat docks (2x2, must be placed next to water)"
+    },
+    "pier_large": {
+      "name": "Pier",
+      "description": "Waterfront pier (must be placed next to water)"
+    },
+    "roller_coaster_small": {
+      "name": "Roller Coaster",
+      "description": "Thrill ride (2x2)"
+    },
+    "community_garden": {
+      "name": "Community Garden",
+      "description": "Shared gardening space"
+    },
+    "pond_park": {
+      "name": "Pond Park",
+      "description": "Park with scenic pond"
+    },
+    "park_gate": {
+      "name": "Park Gate",
+      "description": "Decorative park entrance"
+    },
+    "mountain_lodge": {
+      "name": "Mountain Lodge",
+      "description": "Nature retreat lodge (2x2)"
+    },
+    "mountain_trailhead": {
+      "name": "Trailhead",
+      "description": "Hiking trail entrance (3x3)"
+    }
+  },
+  "commandMenu": {
+    "title": "Command Menu",
+    "search_placeholder": "Search tools, buildings, panels...",
+    "no_results": "No results found.",
+    "navigate": "navigate",
+    "select": "select",
+    "to_toggle": "to_toggle",
+    "categories": {
+      "tools": "Tools",
+      "zones": "Zones",
+      "services": "Services",
+      "parks": "Parks",
+      "sports": "Sports",
+      "recreation": "Recreation",
+      "waterfront": "Waterfront",
+      "community": "Community",
+      "utilities": "Utilities",
+      "special": "Special",
+      "panels": "Panels"
+    }
+  },
+  "sidebar": {
+    "tools": "Tools",
+    "zones": "Zones",
+    "buildings": "BUILDINGS",
+    "budget": "Budget",
+    "statistics": "Statistics",
+    "advisors": "Advisors",
+    "settings": "Settings",
+    "exit_dialog": {
+      "title": "Exit to Main Menu",
+      "description": "Would you like to save your city before exiting?",
+      "exit": "Exit Without Saving",
+      "save": "Save & Exit"
+    }
+  },
+  "app": {
+    "cost": "Cost",
+    "mo": "mo",
+    "tile": "Tile",
+    "building": "Building",
+    "zone": "Zone",
+    "level": "Level",
+    "power": "Power",
+    "no_power": "No Power",
+    "water": "Water",
+    "no_water": "No Water",
+    "connected": "Connected",
+    "land_value": "Land Value",
+    "pollution": "Pollution",
+    "on_fire": "ON FIRE!",
+    "damage": "damage",
+    "service_coverage": "Service Coverage",
+    "funds": "Funds",
+    "monthly": "Monthly",
+    "tax": "Tax"
+  },
+  "budget_dialog": {
+    "title": "Budget",
+    "income": "Income",
+    "expenses": "Expenses",
+    "net": "Net"
+  },
+  "budget": {
+    "police": "Police",
+    "fire": "Fire",
+    "health": "Health",
+    "education": "Education",
+    "transportation": "Transportation",
+    "parks": "Parks",
+    "power": "Power",
+    "water": "Water"
+  },
+  "statistics": {
+    "title": "City Statistics",
+    "population": "Population",
+    "jobs": "Jobs",
+    "treasury": "Treasury",
+    "weekly": "Weekly",
+    "money": "Money",
+    "happiness": "Happiness",
+    "no_data": "Not enough data yet. Keep playing to see historical trends.",
+    "safety": "Safety",
+    "environment": "Environment"
+  }
+}
