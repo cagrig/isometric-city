@@ -197,7 +197,7 @@ export const TopBar = React.memo(function TopBar() {
               variant={speed === s ? 'default' : 'ghost'}
               size="icon-sm"
               className="h-7 w-7 p-0 m-0"
-              title={s === 0 ? 'Pause' : s === 1 ? 'Normal' : s === 2 ? 'Fast' : 'Very Fast'}
+              title={t(s === 0 ? 'app.pause' : s === 1 ? 'app.normal' : s === 2 ? 'app.fast' : 'app.very_fast')}
             >
               {s === 0 ? <PauseIcon size={12} /> : 
                s === 1 ? <PlayIcon size={12} /> : 

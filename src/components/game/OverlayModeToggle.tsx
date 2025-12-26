@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import {
@@ -54,6 +55,9 @@ export const OverlayModeToggle = React.memo(function OverlayModeToggle({
   overlayMode,
   setOverlayMode,
 }: OverlayModeToggleProps) {
+
+  const t = useTranslations();
+  
   return (
     <Card className="absolute bottom-4 left-4 p-2 shadow-lg bg-card/90 border-border/70 z-50">
       <div className="text-[10px] uppercase tracking-[0.12em] text-muted-foreground font-semibold mb-2">
@@ -71,7 +75,7 @@ export const OverlayModeToggle = React.memo(function OverlayModeToggle({
               size="sm"
               onClick={() => setOverlayMode(mode)}
               className={`h-8 px-3 ${getOverlayButtonClass(mode, isActive)}`}
-              title={config.title}
+              title={t(config.title)}
             >
               {OVERLAY_ICONS[mode]}
             </Button>

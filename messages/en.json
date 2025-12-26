@@ -288,7 +288,11 @@
     "service_coverage": "Service Coverage",
     "funds": "Funds",
     "monthly": "Monthly",
-    "tax": "Tax"
+    "tax": "Tax",
+    "pause": "Pause",
+    "normal": "Normal",
+    "fast": "Fast",
+    "very_fast": "Very Fast"
   },
   "budget_dialog": {
     "title": "Budget",
@@ -317,5 +321,16 @@
     "no_data": "Not enough data yet. Keep playing to see historical trends.",
     "safety": "Safety",
     "environment": "Environment"
+  },
+  "view_overlay": {
+    "title": "View Overlay",
+    "no_overlay": "No Overlay",
+    "power_grid": "Power Grid",
+    "water_system": "Water System",
+    "fire_coverage": "Fire Coverage",
+    "police_coverage": "Police Coverage",
+    "health_coverage": "Health Coverage",
+    "education_coverage": "Education Coverage",
+    "subway_coverage": "Subway Coverage"
   }
 }
